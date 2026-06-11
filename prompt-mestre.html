@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prompt Mestre Ultra — Geize Lima</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --b:#5A0E1E;
+  --bd:#3A0812;
+  --bl:#7A1A2E;
+  --g:#C9A84C;
+  --gl:rgba(201,168,76,0.18);
+  --f:#FAF8F4;
+  --f2:#F4F0EA;
+  --t:#1E0A0E;
+  --tl:#7A5560;
+  --w:#FFFFFF;
+}
+
+html{scroll-behavior:smooth}
+
+body{
+  font-family:'Raleway',sans-serif;
+  font-size:15px;
+  font-weight:300;
+  color:var(--t);
+  background:var(--f);
+  line-height:1.75;
+  overflow-x:hidden;
+}
+
+/* ── PARTÍCULAS ── */
+#particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden}
+.p{position:absolute;border-radius:50%;animation:rise linear infinite;opacity:0}
+@keyframes rise{
+  0%{transform:translateY(100vh) scale(0);opacity:0}
+  10%{opacity:1}
+  90%{opacity:.4}
+  100%{transform:translateY(-20vh) scale(1.2);opacity:0}
+}
+
+/* ── HEADER ── */
+header{
+  position:relative;
+  background:linear-gradient(160deg,var(--bd) 0%,var(--b) 50%,#7A1530 100%);
+  padding:70px 24px 60px;
+  text-align:center;
+  overflow:hidden;
+  z-index:1;
+}
+
+.halo{
+  position:absolute;
+  top:-80px;left:50%;transform:translateX(-50%);
+  width:420px;height:420px;
+  background:radial-gradient(circle,rgba(201,168,76,.22) 0%,transparent 70%);
+  pointer-events:none;
+  animation:pulse 5s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{opacity:.6;transform:translateX(-50%) scale(1)}50%{opacity:1;transform:translateX(-50%) scale(1.08)}}
+
+.linha-ouro{
+  position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--g),transparent);
+}
+.linha-ouro-b{
+  position:absolute;bottom:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(201,168,76,.4),transparent);
+}
+
+.foto-anel{
+  position:relative;
+  width:120px;height:120px;
+  margin:0 auto 22px;
+  animation:fadeUp .9s ease both;
+}
+.foto-anel::before{
+  content:'';
+  position:absolute;inset:-5px;
+  border-radius:50%;
+  border:1px solid rgba(201,168,76,.5);
+  animation:spinSlow 12s linear infinite;
+}
+.foto-anel::after{
+  content:'';
+  position:absolute;inset:-10px;
+  border-radius:50%;
+  border:1px dashed rgba(201,168,76,.2);
+  animation:spinSlow 20s linear infinite reverse;
+}
+@keyframes spinSlow{to{transform:rotate(360deg)}}
+
+.foto-anel img{
+  width:120px;height:120px;
+  border-radius:50%;
+  object-fit:cover;object-position:center top;
+  border:2px solid var(--g);
+  display:block;
+}
+
+.criado{font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--g);margin-bottom:8px;animation:fadeUp .9s .1s ease both}
+.nome-h{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:500;color:var(--w);letter-spacing:.06em;margin-bottom:6px;animation:fadeUp .9s .2s ease both}
+.cargo-h{font-size:11px;font-weight:400;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:14px;animation:fadeUp .9s .3s ease both}
+
+.ig-btn{
+  display:inline-block;
+  font-size:12px;font-weight:500;letter-spacing:.1em;
+  color:var(--g);text-decoration:none;
+  border:1px solid rgba(201,168,76,.35);
+  padding:7px 20px;
+  transition:all .3s;
+  animation:fadeUp .9s .4s ease both;
+}
+.ig-btn:hover{background:rgba(201,168,76,.1);border-color:var(--g)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── ORNAMENTO ── */
+.ornamento{
+  display:flex;align-items:center;justify-content:center;gap:14px;
+  margin:0 auto;padding:18px 0;
+  max-width:320px;
+}
+.ornamento-linha{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--g))}
+.ornamento-linha.r{background:linear-gradient(90deg,var(--g),transparent)}
+.ornamento-diamond{width:6px;height:6px;background:var(--g);transform:rotate(45deg)}
+
+/* ── HERO ── */
+.hero{
+  position:relative;z-index:1;
+  text-align:center;
+  padding:72px 24px 64px;
+  max-width:720px;margin:0 auto;
+}
+
+.tag{
+  display:inline-block;
+  font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--b);border:1px solid rgba(90,14,30,.3);
+  padding:6px 18px;margin-bottom:24px;
+}
+
+h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:38px;font-weight:400;font-style:italic;
+  color:var(--bd);line-height:1.2;
+  margin-bottom:10px;
+  letter-spacing:.01em;
+}
+h1 span{font-style:normal;font-weight:600;font-size:34px}
+
+.hero-sub{
+  font-family:'Cormorant Garamond',serif;
+  font-size:17px;font-weight:300;font-style:italic;
+  color:var(--tl);max-width:500px;margin:0 auto 28px;
+}
+
+.hero-desc{
+  font-size:15px;font-weight:300;color:var(--tl);
+  max-width:480px;margin:0 auto;line-height:1.85;
+}
+
+/* ── SEÇÃO INSTRUCOES ── */
+.instrucoes{
+  background:linear-gradient(180deg,var(--f2) 0%,var(--f) 100%);
+  padding:72px 24px;
+  position:relative;
+}
+.instrucoes::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(90,14,30,.15),transparent);
+}
+
+.sec-inner{max-width:680px;margin:0 auto}
+
+.sec-label{
+  font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--g);display:block;margin-bottom:10px;
+}
+
+h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:28px;font-weight:500;
+  color:var(--bd);margin-bottom:6px;
+  letter-spacing:.02em;
+}
+
+.sec-intro{
+  font-size:15px;font-weight:300;color:var(--tl);
+  margin-bottom:44px;line-height:1.85;
+}
+
+/* passos */
+.passo{
+  display:flex;gap:22px;margin-bottom:32px;
+  align-items:flex-start;
+  animation:fadeUp .6s ease both;
+}
+
+.num-wrap{display:flex;flex-direction:column;align-items:center;gap:0}
+.num{
+  width:34px;height:34px;border-radius:50%;
+  background:var(--b);color:var(--w);
+  font-size:12px;font-weight:600;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;letter-spacing:0;
+  box-shadow:0 4px 16px rgba(90,14,30,.25);
+}
+.num-line{width:1px;height:100%;min-height:24px;background:rgba(90,14,30,.12);margin-top:4px}
+
+.p-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:18px;font-weight:500;
+  color:var(--bd);margin-bottom:5px;display:block;
+}
+.p-desc{font-size:15px;font-weight:300;color:var(--tl);line-height:1.8}
+
+/* aviso */
+.aviso{
+  margin-top:36px;
+  background:linear-gradient(135deg,rgba(90,14,30,.04),rgba(201,168,76,.06));
+  border:1px solid rgba(201,168,76,.3);
+  padding:22px 24px;
+  position:relative;overflow:hidden;
+}
+.aviso::before{
+  content:'';position:absolute;top:0;left:0;width:3px;height:100%;
+  background:linear-gradient(180deg,var(--g),var(--b));
+}
+.aviso-label{font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--g);display:block;margin-bottom:8px}
+.aviso p{font-size:14px;font-weight:300;color:var(--tl);line-height:1.8}
+.aviso strong{color:var(--b);font-weight:600}
+
+/* ── GALERIA ── */
+.galeria{padding:72px 24px;position:relative;z-index:1}
+.galeria-head{text-align:center;margin-bottom:44px}
+.galeria-head h2{margin-bottom:8px}
+.galeria-desc{font-size:15px;font-weight:300;color:var(--tl);max-width:460px;margin:0 auto}
+
+.galeria-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  max-width:680px;margin:0 auto;
+}
+
+.galeria-item{
+  position:relative;overflow:hidden;
+  cursor:default;
+}
+.galeria-item img{
+  width:100%;display:block;
+  transition:transform .6s ease;
+  border:1px solid rgba(90,14,30,.08);
+}
+.galeria-item:hover img{transform:scale(1.03)}
+
+.galeria-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(58,8,18,.7) 0%,transparent 50%);
+  opacity:0;transition:opacity .4s;
+  display:flex;align-items:flex-end;padding:16px;
+}
+.galeria-item:hover .galeria-overlay{opacity:1}
+.galeria-overlay span{
+  font-size:12px;font-weight:500;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--g);
+}
+
+/* ── PROMPT ── */
+.prompt-sec{
+  background:linear-gradient(160deg,var(--bd) 0%,var(--b) 60%,#6B1020 100%);
+  padding:72px 24px;
+  position:relative;overflow:hidden;
+}
+.prompt-sec::before{
+  content:'';position:absolute;
+  top:-200px;right:-150px;
+  width:500px;height:500px;
+  background:radial-gradient(circle,rgba(201,168,76,.12) 0%,transparent 70%);
+  pointer-events:none;
+}
+.prompt-sec::after{
+  content:'';position:absolute;
+  bottom:-150px;left:-100px;
+  width:400px;height:400px;
+  background:radial-gradient(circle,rgba(201,168,76,.08) 0%,transparent 70%);
+  pointer-events:none;
+}
+
+.prompt-inner{max-width:680px;margin:0 auto;position:relative;z-index:1}
+.prompt-sec .sec-label{color:rgba(201,168,76,.7)}
+.prompt-sec h2{color:var(--w);margin-bottom:6px}
+.prompt-sec .sec-intro{color:rgba(255,255,255,.45);margin-bottom:28px}
+
+.prompt-box{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(201,168,76,.2);
+  padding:28px 30px;
+  font-size:14px;font-weight:300;
+  color:rgba(255,255,255,.7);
+  line-height:1.85;
+  white-space:pre-wrap;
+  font-family:'Raleway',sans-serif;
+  max-height:380px;
+  overflow-y:auto;
+  position:relative;
+}
+.prompt-box::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--g),transparent);
+}
+.prompt-box::-webkit-scrollbar{width:3px}
+.prompt-box::-webkit-scrollbar-track{background:transparent}
+.prompt-box::-webkit-scrollbar-thumb{background:rgba(201,168,76,.3)}
+
+.btn-copiar{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  width:100%;margin-top:14px;
+  padding:16px;
+  background:transparent;
+  border:1px solid var(--g);
+  color:var(--g);
+  font-family:'Raleway',sans-serif;
+  font-size:11px;font-weight:600;
+  letter-spacing:.2em;text-transform:uppercase;
+  cursor:pointer;
+  transition:all .3s;
+  position:relative;overflow:hidden;
+}
+.btn-copiar::before{
+  content:'';position:absolute;inset:0;
+  background:var(--g);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .4s ease;z-index:0;
+}
+.btn-copiar:hover::before{transform:scaleX(1)}
+.btn-copiar:hover{color:var(--bd)}
+.btn-copiar span{position:relative;z-index:1}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--bd);
+  padding:44px 24px;text-align:center;
+  border-top:1px solid rgba(201,168,76,.15);
+  position:relative;
+}
+footer::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(201,168,76,.3),transparent);
+}
+footer p{font-size:13px;color:rgba(255,255,255,.35);line-height:1.9;letter-spacing:.04em}
+footer strong{color:rgba(255,255,255,.65);font-weight:500}
+footer a{color:var(--g);text-decoration:none}
+footer a:hover{opacity:.75}
+
+/* ── SCROLL REVEAL ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- PARTÍCULAS -->
+<div id="particles"></div>
+
+<!-- HEADER -->
+<header>
+  <div class="halo"></div>
+  <div class="linha-ouro"></div>
+  <div class="linha-ouro-b"></div>
+
+  <div class="foto-anel">
+    <img src="foto-geize.jpg" alt="Geize Lima" id="fotoEl">
+  </div>
+
+  <p class="criado">Criado por</p>
+  <p class="nome-h">Geize Lima</p>
+  <p class="cargo-h">Psicóloga &nbsp;·&nbsp; Especialista em Posicionamento Feminino</p>
+  <a href="https://instagram.com/geizeliima" target="_blank" class="ig-btn">@geizeliima</a>
+</header>
+
+<!-- HERO -->
+<section class="hero reveal">
+  <div class="tag">Ferramenta exclusiva</div>
+  <h1><span>Prompt Mestre Ultra</span><br>Consultoria de Imagem Premium<br><em>em 8 Páginas</em></h1>
+  <p class="hero-sub">Resultado nível consultoria internacional.</p>
+  <div class="ornamento"><div class="ornamento-linha"></div><div class="ornamento-diamond"></div><div class="ornamento-linha r"></div></div>
+  <p class="hero-desc">O prompt mais completo do mercado para gerar seu relatório visual de beleza com inteligência artificial, feito a partir da sua foto real.</p>
+</section>
+
+<!-- INSTRUÇÕES -->
+<div class="instrucoes">
+  <div class="sec-inner">
+    <span class="sec-label reveal">Guia de uso</span>
+    <h2 class="reveal">Como usar sem errar</h2>
+    <p class="sec-intro reveal">Antes de colar o prompt, leia com atenção. A ordem importa e cada etapa existe por um motivo.</p>
+
+    <div class="passo reveal">
+      <div class="num-wrap"><div class="num">1</div><div class="num-line"></div></div>
+      <div>
+        <span class="p-title">Abra o ChatGPT e inicie uma conversa nova</span>
+        <p class="p-desc">Não utilize uma conversa anterior. Começar do zero garante que a IA não misture contextos e mantenha foco total na sua análise.</p>
+      </div>
+    </div>
+
+    <div class="passo reveal">
+      <div class="num-wrap"><div class="num">2</div><div class="num-line"></div></div>
+      <div>
+        <span class="p-title">Envie sua foto primeiro</span>
+        <p class="p-desc">Use uma foto com boa iluminação, rosto visível e sem filtros. Quanto mais nítida, mais preciso será o resultado.</p>
+      </div>
+    </div>
+
+    <div class="passo reveal">
+      <div class="num-wrap"><div class="num">3</div><div class="num-line"></div></div>
+      <div>
+        <span class="p-title">Cole o Prompt Mestre completo</span>
+        <p class="p-desc">Logo abaixo da foto, na mesma mensagem ou na mensagem imediatamente seguinte. Não altere nenhuma palavra do prompt.</p>
+      </div>
+    </div>
+
+    <div class="passo reveal">
+      <div class="num-wrap"><div class="num">4</div><div class="num-line"></div></div>
+      <div>
+        <span class="p-title">Após a IA responder, envie apenas: Faça a Página 1</span>
+        <p class="p-desc">Espere ela terminar completamente antes de continuar. Não interrompa o processo.</p>
+      </div>
+    </div>
+
+    <div class="passo reveal">
+      <div class="num-wrap"><div class="num">5</div></div>
+      <div>
+        <span class="p-title">Continue página por página até a Página 8</span>
+        <p class="p-desc">Envie Faça a Página 2, depois Faça a Página 3, e assim por diante. Nunca peça mais de uma página ao mesmo tempo. Esse é o segredo para manter a consistência visual e o resultado no nível de uma consultoria real.</p>
+      </div>
+    </div>
+
+    <div class="aviso reveal">
+      <span class="aviso-label">Atenção</span>
+      <p>Se a IA começar a descrever a página em vez de gerar a imagem, escreva exatamente isto: <strong>"Gere a imagem. Não descreva."</strong> Ela vai corrigir e entregar o que foi pedido.</p>
+    </div>
+  </div>
+</div>
+
+<!-- GALERIA -->
+<div class="galeria">
+  <div class="galeria-head reveal">
+    <span class="sec-label" style="display:block;text-align:center;color:var(--g);font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;margin-bottom:10px;">Exemplos reais</span>
+    <h2>Veja o que você vai conseguir criar</h2>
+    <p class="galeria-desc">Cada imagem abaixo é uma página real gerada com este prompt.</p>
+  </div>
+
+  <div class="galeria-grid">
+    <div class="galeria-item reveal"><img src="pagina-1.jpg" alt="Análise de Coloração"><div class="galeria-overlay"><span>Página 1</span></div></div>
+    <div class="galeria-item reveal"><img src="pagina-2.jpg" alt="Melhores Cores"><div class="galeria-overlay"><span>Página 2</span></div></div>
+    <div class="galeria-item reveal"><img src="pagina-3.jpg" alt="Cores a Evitar"><div class="galeria-overlay"><span>Página 3</span></div></div>
+    <div class="galeria-item reveal"><img src="pagina-4.jpg" alt="Guia de Maquiagem"><div class="galeria-overlay"><span>Página 4</span></div></div>
+    <div class="galeria-item reveal"><img src="pagina-6.jpg" alt="Cor de Cabelo"><div class="galeria-overlay"><span>Página 6</span></div></div>
+    <div class="galeria-item reveal"><img src="pagina-7.jpg" alt="Cortes e Penteados"><div class="galeria-overlay"><span>Página 7</span></div></div>
+    <div class="galeria-item reveal" style="grid-column:1/-1;max-width:340px;margin:0 auto;width:100%"><img src="pagina-8.jpg" alt="Resumo Final"><div class="galeria-overlay"><span>Página 8 — Resumo Final</span></div></div>
+  </div>
+</div>
+
+<!-- PROMPT -->
+<div class="prompt-sec">
+  <div class="prompt-inner">
+    <span class="sec-label">Prompt completo</span>
+    <h2>Cole na íntegra no ChatGPT</h2>
+    <p class="sec-intro">Copie tudo. Não altere nenhuma palavra.</p>
+
+    <div class="prompt-box" id="promptTexto">Atue simultaneamente como Consultora Internacional de Coloração Pessoal, Especialista em Método Sazonal Expandido, Visagista, Consultora de Imagem Feminina, Maquiadora Profissional, Hair Stylist, Especialista em Harmonia Facial, Consultora de Estilo Feminino e Designer Editorial Premium.
+
+Vou enviar uma foto nítida minha. Sua missão é criar um RELATÓRIO VISUAL PROFISSIONAL COMPLETO utilizando exclusivamente minhas características reais.
+
+REGRAS ABSOLUTAS QUE NUNCA DEVEM SER QUEBRADAS:
+
+Não utilize exemplos genéricos. Não crie outra mulher. Não substitua meu rosto. Não altere minha identidade, meus traços, minha etnia, meu formato facial, meu tom de pele ou minha aparência natural. Toda recomendação deve ser construída a partir da análise da minha própria imagem.
+
+ANÁLISE OBRIGATÓRIA ANTES DE QUALQUER PÁGINA:
+
+Antes de gerar qualquer imagem, analise internamente e em silêncio os seguintes elementos. Não mostre o raciocínio. Mostre apenas o resultado final.
+
+Coloração: tom de pele, subtom, temperatura, profundidade, intensidade e contraste.
+
+Características faciais: formato do rosto, formato dos olhos, sobrancelhas, maçãs do rosto, nariz, lábios e estrutura facial geral.
+
+Cabelo: cor natural, profundidade da cor, contraste com a pele, textura aparente e comprimento atual.
+
+Imagem e estilo: linhas predominantes, estilo visual percebido e harmonia estética geral.
+
+IDENTIDADE VISUAL OBRIGATÓRIA:
+
+Todas as páginas devem parecer material produzido por uma consultoria de imagem de luxo, com referência estética em Vogue, Elle, Harper's Bazaar e relatórios premium de visagismo internacional. O visual deve ser sofisticado, elegante, feminino, organizado, editorial, moderno e altamente profissional.
+
+CONFIGURAÇÃO DE IMAGEM:
+
+Formato 1080x1350, vertical, alta resolução, legibilidade perfeita no celular.
+
+REGRA DE DESIGN:
+
+80% visual, 20% texto. Sempre utilizar paletas de cores, gráficos, etiquetas, infográficos, diagramas, comparativos, amostras de cores, simulações e elementos editoriais. Nunca usar excesso de texto, aparência de PowerPoint, aparência de PDF, aparência de slides, visual amador, colagens gigantes ou blocos enormes de texto.
+
+USO DA MINHA FOTO:
+
+Sempre que possível, utilize meu rosto real como referência principal. As simulações devem continuar parecendo comigo. Não me transforme em outra pessoa.
+
+ESTRUTURA DO RELATÓRIO — 8 PÁGINAS INDEPENDENTES:
+
+Página 1: Análise de Coloração Pessoal. Incluir estação provável, subtom, temperatura, intensidade, profundidade, contraste, melhores neutros, melhores cores, melhores metais, cores de destaque e cores a evitar. Usar gráficos, paletas, etiquetas e infográficos.
+
+Página 2: Melhores Cores Para Você. Mostrar cores que iluminam, harmonizam, valorizam e suavizam. Criar comparações visuais com amostras grandes e exemplos próximos ao rosto.
+
+Página 3: Cores que Devem Ser Evitadas. Mostrar cores que apagam, envelhecem, endurecem ou criam contraste excessivo. Criar comparativos visuais claros.
+
+Página 4: Guia de Cores para Maquiagem. Criar tabela visual com base, corretivo, blush, bronzer, contorno, iluminador, sombras, delineador, máscara, batom e lápis labial. Mostrar amostras reais de cor.
+
+Página 5: Mapa de Maquiagem Personalizado. Utilizar meu rosto com setas, etiquetas e diagramas mostrando a aplicação de blush, contorno, bronzer, iluminador, sombra, delineado, sobrancelhas e lábios.
+
+Página 6: Guia de Cor de Cabelo. Mostrar melhores castanhos, reflexos, mechas, lowlights, balayage, profundidade ideal, direção de cor ideal e cores a evitar. Mostrar exemplos harmonizados comigo.
+
+Página 7: Guia de Corte e Penteado. Analisar formato do rosto, proporções, estrutura facial e comprimento atual. Mostrar melhores cortes, comprimentos, camadas, franjas e penteados. Evitar transformações irreais.
+
+Página 8: Resumo Final da Beleza. Criar a página mais bonita do relatório reunindo minha estação, minhas melhores cores, minha maquiagem ideal, minha cor de cabelo ideal, meu corte ideal, meu estilo visual e minha fórmula de beleza. Usar paletas, ícones, gráficos e elementos editoriais premium.
+
+CONTINUIDADE OBRIGATÓRIA:
+
+Todas as páginas devem manter a mesma identidade visual, tipografia, paleta, estilo editorial, estética e pessoa ao longo de todo o relatório.
+
+MODO DE EXECUÇÃO OBRIGATÓRIO:
+
+Nunca gere todas as páginas juntas. Nunca gere colagens, apresentações, PDFs ou slides. Trabalhe exclusivamente em modo sequencial, gerando apenas uma página por vez. Após gerar cada página, pare e aguarde meu próximo comando.
+
+COMANDOS DE GERAÇÃO:
+
+Quando eu escrever "Faça a Página 1", gere a imagem da Página 1 e pare. Quando eu escrever "Faça a Página 2", gere a imagem da Página 2 e pare. Siga essa lógica até a Página 8. Não explique. Não descreva. Não faça planejamento. Não peça confirmação. Não responda apenas com texto. A única ação esperada é gerar a imagem da página solicitada e aguardar o próximo comando.</div>
+
+    <button class="btn-copiar" onclick="copiar()"><span>✦ &nbsp; Copiar prompt completo</span></button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ornamento" style="margin-bottom:20px"><div class="ornamento-linha" style="background:linear-gradient(90deg,transparent,rgba(201,168,76,.3))"></div><div class="ornamento-diamond" style="background:rgba(201,168,76,.5)"></div><div class="ornamento-linha r" style="background:linear-gradient(90deg,rgba(201,168,76,.3),transparent)"></div></div>
+  <p><strong>Geize Lima</strong><br>Psicóloga · Especialista em Posicionamento Feminino<br><a href="https://instagram.com/geizeliima" target="_blank">@geizeliima</a></p>
+</footer>
+
+<script>
+/* PARTÍCULAS */
+const container = document.getElementById('particles');
+for(let i=0;i<18;i++){
+  const p=document.createElement('div');
+  p.className='p';
+  const size=Math.random()*3+1.5;
+  p.style.cssText=`
+    width:${size}px;height:${size}px;
+    left:${Math.random()*100}%;
+    background:${Math.random()>.5?'rgba(201,168,76,':'rgba(255,255,255,'}${(Math.random()*.4+.1)});
+    animation-duration:${Math.random()*14+10}s;
+    animation-delay:${Math.random()*10}s;
+  `;
+  container.appendChild(p);
+}
+
+/* SCROLL REVEAL */
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}});
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+/* COPIAR */
+function copiar(){
+  const t=document.getElementById('promptTexto').innerText;
+  navigator.clipboard.writeText(t).then(()=>{
+    const b=document.querySelector('.btn-copiar span');
+    b.textContent='✓  Copiado com sucesso';
+    setTimeout(()=>{b.textContent='✦   Copiar prompt completo'},2800);
+  });
+}
+</script>
+</body>
+</html>
